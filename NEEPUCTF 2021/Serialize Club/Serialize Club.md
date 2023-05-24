@@ -23,7 +23,7 @@ class backdoor {
         $cmd;
 
     public function __invoke() {
-        if(preg_match('/[;+=!@\$\"\.\_\(\)\[\]]{1,}/i',$this->cmd)) {
+        if(preg_match('/^[;+=!@\$\"\.\_\(\)\[\]]+$/i',$this->cmd)) {
             file_put_contents("/var/www/html/neepu.php", "<?php ".$this->cmd);
         }
         else{
